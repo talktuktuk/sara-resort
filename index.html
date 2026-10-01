@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123C3A">
+<title>Sara Resort | Koh Rong Samloem</title>
+<style>
+:root {
+  --deep: #123C3A;
+  --green: #245B52;
+  --sand: #F5F0E6;
+  --gold: #C7A66A;
+  --ink: #263B38;
+  --white: #FFFFFF;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--sand);
+  color: var(--ink);
+}
+.hero {
+  min-height: 570px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 35px 20px;
+  background:
+    linear-gradient(rgba(8,35,33,.25), rgba(8,35,33,.65)),
+    url("https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+}
+.hero-content { max-width: 720px; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(48px, 10vw, 82px);
+  letter-spacing: 2px;
+  margin: 0 0 16px;
+}
+.hero p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(18px, 4vw, 25px);
+  line-height: 1.5;
+  margin: 0 auto 28px;
+}
+.button {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: var(--deep);
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+header {
+  background: var(--deep);
+  color: white;
+  text-align: center;
+  padding: 16px 12px;
+}
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+.brand-sub {
+  color: #DCCBA8;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+nav {
+  background: #174743;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 10px;
+}
+nav button {
+  border: 0;
+  background: transparent;
+  color: white;
+  padding: 11px 13px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+nav button:hover { color: #E0C58D; }
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 35px 20px 55px;
+}
+.section { display: none; }
+.section.active { display: block; }
+.intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 35px;
+}
+.kicker {
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--deep);
+  font-weight: 400;
+  font-size: clamp(30px, 6vw, 43px);
+  margin: 12px 0 16px;
+  text-align: center;
+}
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  color: var(--deep);
+  font-size: 24px;
+}
+p { line-height: 1.75; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+.card {
+  background: white;
+  padding: 24px;
+  border: 1px solid #E6DDCD;
+  text-align: center;
+}
+.card .symbol {
+  font-size: 28px;
+  color: var(--gold);
+}
+.card h3 { margin: 12px 0 8px; }
+.card p { font-size: 14px; margin: 0; }
+.info-box {
+  max-width: 760px;
+  margin: 20px auto;
+  background: white;
+  border-left: 3px solid var(--gold);
+  padding: 18px 22px;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+.actions .button.secondary {
+  background: transparent;
+  color: var(--deep);
+}
+footer {
+  background: var(--deep);
+  color: #E8E1D3;
+  text-align: center;
+  padding: 28px 15px;
+  font-size: 12px;
+  letter-spacing: .5px;
+}
+footer a { color: #E0C58D; }
+@media (max-width: 600px) {
+  .hero { min-height: 510px; }
+  nav { gap: 0; }
+  nav button { padding: 10px 9px; font-size: 11px; }
+  main { padding: 28px 16px 40px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">SARA RESORT</div>
+  <div class="brand-sub">Koh Rong Samloem · Cambodia</div>
+</header>
+
+<nav aria-label="Main navigation">
+  <button onclick="showSection('welcome')">WELCOME</button>
+  <button onclick="showSection('rooms')">OUR ROOMS</button>
+  <button onclick="showSection('dining')">DINING</button>
+  <button onclick="showSection('experiences')">EXPERIENCES</button>
+  <button onclick="showSection('island')">ISLAND GUIDE</button>
+  <button onclick="showSection('guest')">GUEST INFO</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Your island escape</div>
+    <h1>Sara Resort</h1>
+    <p>Discover the beauty of island life on Koh Rong Samloem.</p>
+    <a class="button" href="https://sararesort.com/" target="_blank" rel="noopener">Explore the Resort</a>
+  </div>
+</section>
+
+<main>
+  <section id="welcome" class="section active">
+    <div class="intro">
+      <div class="kicker">Welcome to paradise</div>
+      <h2>Relax. Unwind. Explore.</h2>
+      <p>Welcome to Sara Resort, your island retreat on beautiful Koh Rong Samloem. Enjoy the natural beauty of the island, take time to unwind and make the most of your stay.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="symbol">⌂</div>
+        <h3>Our Rooms</h3>
+        <p>Find a comfortable place to relax and enjoy island living.</p>
+      </div>
+      <div class="card">
+        <div class="symbol">♨</div>
+        <h3>Restaurant & Bar</h3>
+        <p>Enjoy food, refreshing drinks and beachfront surroundings.</p>
+      </div>
+      <div class="card">
+        <div class="symbol">◇</div>
+        <h3>Island Experiences</h3>
+        <p>Discover ways to explore the sea, beaches and island.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="button" href="https://sararesort.com/" target="_blank" rel="noopener">Official Website</a>
+      <a class="button secondary" href="https://www.facebook.com/sararesort" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </section>
+
+  <section id="rooms" class="section">
+    <div class="intro">
+      <div class="kicker">Rest and recharge</div>
+      <h2>Our Rooms</h2>
+      <p>Make yourself at home in a peaceful island setting. Visit the official website for current room types, facilities, availability and booking details.</p>
+    </div>
+    <div class="info-box">
+      <h3>Find your island stay</h3>
+      <p>Explore the available accommodation and choose the stay that suits your visit.</p>
+      <div class="actions">
+        <a class="button" href="https://sararesort.com/" target="_blank" rel="noopener">View Rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="dining" class="section">
+    <div class="intro">
+      <div class="kicker">A taste of the island</div>
+      <h2>Restaurant & Bar</h2>
+      <p>Enjoy a relaxed dining experience during your stay at Sara Resort.</p>
+    </div>
+    <div class="info-box">
+      <h3>Dining at Sara Resort</h3>
+      <p>For the latest menus, opening times and dining information, please check with the resort team or visit the official website.</p>
+      <div class="actions">
+        <a class="button" href="https://sararesort.com/" target="_blank" rel="noopener">Resort Website</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiences" class="section">
+    <div class="intro">
+      <div class="kicker">Make the most of your stay</div>
+      <h2>Island Experiences</h2>
+      <p>From peaceful beach days to exploring the island, there are many ways to enjoy your time on Koh Rong Samloem.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="symbol">☼</div>
+        <h3>Beach Time</h3>
+        <p>Slow down, enjoy the sea and take in the island scenery.</p>
+      </div>
+      <div class="card">
+        <div class="symbol">≈</div>
+        <h3>On the Water</h3>
+        <p>Ask the resort team about available water-based activities.</p>
+      </div>
+      <div class="card">
+        <div class="symbol">♧</div>
+        <h3>Explore the Island</h3>
+        <p>Discover the natural surroundings and local island life.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="island" class="section">
+    <div class="intro">
+      <div class="kicker">Plan your journey</div>
+      <h2>Island Guide</h2>
+      <p>Prepare for your trip to Koh Rong Samloem and enjoy a smooth arrival.</p>
+    </div>
+    <div class="info-box">
+      <h3>Getting here</h3>
+      <p>Ferry schedules and travel arrangements can change. Please confirm your route, departure point and arrival details with the resort before travelling.</p>
+    </div>
+    <div class="info-box">
+      <h3>Need help planning?</h3>
+      <p>Contact Sara Resort directly for the latest travel advice and arrival information.</p>
+      <div class="actions">
+        <a class="button" href="https://sararesort.com/" target="_blank" rel="noopener">Contact the Resort</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="guest" class="section">
+    <div class="intro">
+      <div class="kicker">Here to help</div>
+      <h2>Guest Information</h2>
+      <p>Useful information to help you enjoy a comfortable and relaxing stay.</p>
+    </div>
+    <div class="info-box">
+      <h3>Our Team</h3>
+      <p>If you need assistance during your stay, please speak with a member of the Sara Resort team.</p>
+    </div>
+    <div class="info-box">
+      <h3>Contact & Updates</h3>
+      <p>For the latest resort information, please use the official website or Facebook page.</p>
+      <div class="actions">
+        <a class="button" href="https://sararesort.com/" target="_blank" rel="noopener">Website</a>
+        <a class="button secondary" href="https://www.facebook.com/sararesort" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>SARA RESORT</div>
+  <p>Koh Rong Samloem · Cambodia</p>
+  <a href="https://sararesort.com/" target="_blank" rel="noopener">sararesort.com</a>
+</footer>
+
+<script>
+function showSection(sectionId) {
+  document.querySelectorAll('.section').forEach(function(section) {
+    section.classList.remove('active');
+  });
+
+  var selected = document.getElementById(sectionId);
+  if (selected) {
+    selected.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+</script>
+
+</body>
+</html>
