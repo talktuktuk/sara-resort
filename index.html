@@ -287,8 +287,8 @@ nav button {
     <p><strong>Order before 7pm for free delivery.</strong> After 7pm, a $1 delivery charge applies.</p>
 
  <div style="text-align:center; margin:30px auto 10px;">
-<a href="#menu" onclick="showSection('menu'); return false;" style="display:block; max-width:420px; margin:auto; padding:22px 20px; background:#2878B5; color:white; text-decoration:none; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-    <div style="font-size:32px; margin-bottom:8px;">🍽️</div>
+<a href="#menu" onclick="document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');}); document.getElementById('menu').classList.add('active'); window.scrollTo(0,0); return false;" style="display:block; max-width:420px; margin:auto; padding:22px 20px; background:#2878B5; color:white; text-decoration:none; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+   <div style="font-size:32px; margin-bottom:8px;">🍽️</div>
     <div style="font-size:20px; font-weight:700; letter-spacing:1px;">VIEW OUR MENU</div>
     <div style="font-size:13px; margin-top:6px; opacity:0.9;">Food • Drinks • Breakfast • Dinner</div>
   </a>
