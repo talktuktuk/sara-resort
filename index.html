@@ -435,7 +435,7 @@ pdfjsLib.getDocument(menuPDF).promise.then(function(pdf) {
     pdf.getPage(pageNumber).then(function(page) {
 
       var viewport = page.getViewport({ scale: 1 });
-      var maxWidth = Math.min(container.clientWidth, 900);
+      var maxWidth = Math.min(container.clientWidth || 900, 900);
       var scale = maxWidth / viewport.width;
       var scaledViewport = page.getViewport({ scale: scale });
 
