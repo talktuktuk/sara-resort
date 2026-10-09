@@ -475,8 +475,10 @@ function showSection(sectionId) {
   var selected = document.getElementById(sectionId);
   if (selected) {
     selected.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 
